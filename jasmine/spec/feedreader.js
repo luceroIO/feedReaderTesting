@@ -104,7 +104,7 @@ $(function() {
             });
         });
 
-        it('init entries working as designed', function(done){
+        it('working as designed, single element exists', function(done){
             var entrys = $('.feed .entry');
             expect(entrys.length).not.toEqual(0);
             done();
@@ -116,14 +116,38 @@ $(function() {
 
     });
 
-
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
         */
+        var originalTimeout;
+        var contentInFeed;
+
+        beforeEach(function(done) {
+            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+
+            loadFeed(0, function() {
+                var container = $('.feed');
+                contentInFeed = container.html();
+
+                loadFeed(1, function() {
+                    done();
+                });
+            });
+        });
+
+        it('work as designed, loaded by loadFeed()', function(done){
+            var newFeed = $('.feed');
+            expect(newFeed.html()).not.toEqual(contentInFeed);
+            done();
+        });
+
+        afterEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+        });
 
     });
 }());
