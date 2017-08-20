@@ -1,6 +1,8 @@
+/* fixed the css validating error  being cause by ':' that was on what now is  line 5  */
+
 *,
 *:after,
-*:before: {
+*:before {
     box-sizing: inherit;
 }
 

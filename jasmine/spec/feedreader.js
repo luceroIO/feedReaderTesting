@@ -1,3 +1,15 @@
+//Clearing jsHint errors
+/*global describe*/
+/*global $*/
+/*global it*/
+/*global expect*/
+/*global beforeEach*/
+/*global allFeeds*/
+/*global jasmine*/
+/*global loadFeed*/
+/*global afterEach*/
+
+
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
