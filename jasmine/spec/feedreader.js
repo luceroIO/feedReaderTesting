@@ -33,6 +33,8 @@ $(function() {
          */
         it('url data is defined', function(){
             allFeeds.forEach(function(feed){
+                /*toBeTruthy() - Check if the value, when cast to a boolean, will be a truthy value
+                Truthy values are all values that aren't 0, '' (empty string), false, null, NaN, undefined */
                 expect(feed.url).toBeTruthy();
                 expect(feed.url.length).toBeGreaterThan(0);
             });
@@ -61,9 +63,8 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function(){
-            console.log($('body').hasClass());
+            //.hasClass() method will return true if the class is assigned to an element
             expect($('body').hasClass('menu-hidden')).toBe(true);
-
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -71,6 +72,15 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('opens and closes when clicked', function() {
+            /*.click(handler) Bind an event handler to the "click" JavaScript event, or
+             trigger that event on an element. click() is a shortcut,  think .on("click", handler)
+            */
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+        });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
